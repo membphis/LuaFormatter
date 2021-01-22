@@ -551,6 +551,7 @@ antlrcpp::Any FormatVisitor::visitForInStat(LuaParser::ForInStatContext* ctx) {
 // FUNCTION funcname funcbody;
 antlrcpp::Any FormatVisitor::visitFuncStat(LuaParser::FuncStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
+    cur_writer() << "\n";
     cur_writer() << ctx->FUNCTION()->getText();
     cur_writer() << commentAfter(ctx->FUNCTION(), " ");
     visitFuncname(ctx->funcname());
@@ -563,6 +564,7 @@ antlrcpp::Any FormatVisitor::visitFuncStat(LuaParser::FuncStatContext* ctx) {
 // LOCAL FUNCTION NAME funcbody;
 antlrcpp::Any FormatVisitor::visitLocalFuncStat(LuaParser::LocalFuncStatContext* ctx) {
     LOG_FUNCTION_BEGIN();
+    cur_writer() << "\n";
     cur_writer() << ctx->LOCAL()->getText();
     cur_writer() << commentAfter(ctx->LOCAL(), " ");
     cur_writer() << ctx->FUNCTION()->getText();
